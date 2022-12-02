@@ -9,13 +9,13 @@ void mainmenu();
 void help();
 void start();
 void quit();
-void r_esult();//lightblue
+void r_esult();
 void instruction();
 void Mathematics();
-void Physics();//blue
-void Chemistry();//blue
-void C_program();//blue
-void General_Knowledge();//blue
+void Physics();
+void Chemistry();
+void C_program();
+void General_Knowledge();
 void last_menu();
 int result=0;
 
@@ -38,15 +38,19 @@ void last_menu()
     system("cls");
 
 
-
+    system("color F6");
     int op;
     //printf(" # Home Page  \t\t\t # Start Again \n\n");
-    printf("Are you want to go Home Page or again play with another topic ?\n");
-    printf(" If you Want to go home page press 1 !!! \n \n ");
-    printf(" If you Want play again  press 2 !!! \n \n ");
-    fflush(stdin);
-
-    printf(" 1.Home Page  \t\t\t 2.Start Again \n\n");
+    gotoxy(25,2);
+    printf("Are you want to go Home Page or again play with another topic ?");
+    gotoxy(30,4);
+    printf("If you Want to go home page press 1 !!!");
+    gotoxy(30,6);
+    printf(" If you Want play again  press 2 !!!");
+    gotoxy(30,4);
+    printf("1.Home Page \t\t\t 2.Start Again ");
+    gotoxy(30,8);
+    printf("->");
     scanf("%d",&op);
     if(op==1)
     {
@@ -251,7 +255,7 @@ getch();
   char str[50] = "Your Result is: ";
 
         //open file sample.txt in write mode
-        FILE *fptr = fopen("D://sample.txt", "w");
+        FILE *fptr = fopen("D://Quiz Game.txt", "w");
         if (fptr == NULL)
         {
             printf("Could not open file");
@@ -493,7 +497,7 @@ void  Physics()
      char str[50] = "Your Result is: ";
 
         //open file sample.txt in write mode
-        FILE *fptr = fopen("D://sample.txt", "w");
+        FILE *fptr = fopen("D://Quiz Game.txt", "w");
         if (fptr == NULL)
         {
             printf("Could not open file");
@@ -515,7 +519,7 @@ void  Physics()
 
 
 
-    last_menu();
+
 
 }
 
@@ -732,7 +736,7 @@ void Chemistry()
    char str[50] = "Your Result is: ";
 
         //open file sample.txt in write mode
-        FILE *fptr = fopen("D://sample.txt", "w");
+        FILE *fptr = fopen("D://Quiz Game.txt", "w");
         if (fptr == NULL)
         {
             printf("Could not open file");
@@ -971,7 +975,7 @@ void C_program()
      char str[50] = "Your Result is: ";
 
         //open file sample.txt in write mode
-        FILE *fptr = fopen("D://sample.txt", "w");
+        FILE *fptr = fopen("D://Quiz Game.txt", "w");
         if (fptr == NULL)
         {
             printf("Could not open file");
@@ -1199,7 +1203,7 @@ void General_Knowledge()
      char str[50] = "Your Result is: ";
 
         //open file sample.txt in write mode
-        FILE *fptr = fopen("D://sample.txt", "w");
+        FILE *fptr = fopen("D://Quiz Game.txt", "w");
         if (fptr == NULL)
         {
             printf("Could not open file");
@@ -1258,6 +1262,8 @@ void start()
     gotoxy(30,18);
     printf("5.General Knowledge");
     gotoxy(30,20);
+    printf("6.Home page");
+    gotoxy(30,22);
     printf("->");
     scanf("%d",&cho);
 
@@ -1278,8 +1284,13 @@ void start()
     case 5 :
         General_Knowledge();
         break;
+    case 6 :
+         mainmenu();
+         break;
     default:
-        printf("Wrong Input\n");
+        gotoxy(30,26);
+        printf("Wrong Input");
+        gotoxy(30,28);
         printf("Enter any key");
         getch();
         start();
@@ -1432,6 +1443,8 @@ void quit()
     {
         gotoxy(30,10);
         printf(" please choice valid option!!! ");
+        getch();
+        quit();
     }
 }
 void instruction()
@@ -1439,7 +1452,7 @@ void instruction()
 
     system("cls");
     fflush(stdin);
-    system("color F");
+    system("color F3");
     int op;
     gotoxy(20,0);
     printf(" ******************Welcome in our quiz Game**********************");
@@ -1469,9 +1482,9 @@ void instruction()
     else
     {
         system("cls");
-        gotoxy(30,10);
-        printf("Enter any key to exit --->>");
-        getch();
+       // gotoxy(30,10);
+       // printf("Enter any key to exit --->>");
+        quit();
     }
 }
 void r_esult(){
@@ -1481,9 +1494,9 @@ void r_esult(){
 FILE * file_pointer;
         char c;
      gotoxy(32,10);
-        printf("----read the entire file----\n");
+       printf("-----------Now Your  Quiz Game result-------------- ");
 
-        file_pointer = fopen("D://sample.txt", "r"); //reset the pointer
+        file_pointer = fopen("D://Quiz Game.txt", "r"); //reset the pointer
         gotoxy(30,15);
         while ((c = getc(file_pointer)) != EOF) printf("%c", c);
 
@@ -1491,7 +1504,7 @@ FILE * file_pointer;
 
 
  getch();
- mainmenu();
+ last_menu();
 
 }
 
@@ -1565,3 +1578,4 @@ int main()
 {
     mainmenu();
 }
+
